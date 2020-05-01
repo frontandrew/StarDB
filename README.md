@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# StarDB (react)
+## v0.0.1
+---
+  
+### About:
 
-## Available Scripts
+Hi! And wellcome. 
 
-In the project directory, you can run:
+<div align="center">
 
-### `npm start`
+[![star-db screenshot](https:// "github.io/star-db")](https://frontandrew.github.io/star-db/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</div>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+'StarDB' is a _study React project_. Its web application to get info about things and heroes from Star Wars franchise. Please, [try it](https://frontandrew.github.io/star-db/).
 
-### `npm test`
+### Features:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- User can read this file
 
-### `npm run build`
+### Use technology:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React;
+- ES 2019;
+- HTML5;
+- CSS3;
+- Bootstrap;
+- WebPack4;
+- NPM paсkages;
+- GIT technology.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Fast start:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+0. First you must install [Node.js](https://nodejs.org/en/) and comandline tool, for example [git bash](https://git-scm.com/downloads)
+1. Clone or download repo and unpack on your local
+2. To install environment `npm install`. This download necessary npm packages
+3. To build project local run `npm run build`. This build project from source in dist directory
+4. To develop/debug project local run `npm run start`. This run webpack dev server on your local on 3000 port.
 
-### `npm run eject`
+### Whats new:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<details>
+    <summary>v0.0.1 Project Start</summary>
+    <li>Added README file</li>
+    <li>Added license</li>
+    <li>Set up enviroment</li>
+</details>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Issues:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- not found
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### This project was made possible by:
 
-## Learn More
+* [React](https://reactjs.org);
+* [Juriy Bura](https://github.com/Juriy);
+* [Bootswatch](https://bootswatch.com);
+* [WebPack](https://webpack.js.org);
+* [Babel](https://babeljs.io);
+* [PostCSS](https://vk.com/postcss);
+* [GitHub](http://github.com);
+* And many others.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+> Feel free to ask your questions in [telegram](https://t.me/frontandrew)
