@@ -18,3 +18,11 @@
 .person-details .list-group-item .term{
   margin-right: .5rem;
 }
+
+.person-details .init-message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c78f22;
+}

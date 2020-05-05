@@ -45,7 +45,7 @@ export default class Api {
     return item.url.match(idRegexp)[1];
   }
 
-  _transformPlanet(planet) {
+  _transformPlanet = (planet) => {
     return {
       id: this._extractId(planet),
       name: planet.name,
@@ -55,26 +55,27 @@ export default class Api {
     }
   }
 
-  _transformStarship(starships) {
+  _transformStarship = (starships) => {
     return {
       id: this._extractId(starships),
       name: starships.name,
       model: starships.model,
       manufacturer: starships.manufacturer,
-      costInCredits: starships.costInCredits,
+      costInCredits: starships.cost_in_credits,
       length: starships.length,
       pessengers: starships.pessengers,
-      cargoCapacity: starships.cargoCapacity,
+      cargoCapacity: starships.cargo_capacity,
     }
   }
 
-  _transformRerson(persone) {
+  _transformRerson = (person) => {
     return {
-      id: this._extractId(persone),
-      name: persone.name,
-      gender: persone.gender,
-      birthYear: persone.birthYear,
-      eyeColor: persone.eyeColor,
+      id: this._extractId(person),
+      name: person.name,
+      height: person.height,
+      gender: person.gender,
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color,
     }
   }
 

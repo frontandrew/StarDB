@@ -7,17 +7,21 @@ import Spiner from '../spiner/spiner';
 import ErrorMessage from '../error-message/error-message';
 
 export default class RandomPlanet extends React.Component {
-  constructor() {
-    super();
-    this.updatePlanet();
-  }
 
   swapi = new Api();
 
   state = {
     planet: {},
-    loading: true,
   };
+
+  componentDidMount() {
+    this.updatePlanet();
+    this.interval = setInterval(this.updatePlanet, 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   onPlanetLoaded = (planet) => {
     this.setState({
@@ -34,16 +38,15 @@ export default class RandomPlanet extends React.Component {
     });
   }
 
-  updatePlanet() {
-    const id = Math.floor(Math.random() * 20) + 1;
-    this.swapi
-      .getPlanet(id)
+  updatePlanet = () => {
+    console.log('update');
+    const id = Math.floor(Math.random() * 20) + 2;
+    this.swapi.getPlanet(id)
       .then(this.onPlanetLoaded)
       .catch(this.onError);
   }
 
   render() {
-
     const { planet, loading, error } = this.state;
 
     const hasData = !(loading || error);
@@ -56,7 +59,7 @@ export default class RandomPlanet extends React.Component {
       <div className="random-planet jumbotron rounded">
         {spiner}
         {planetVeiw}
-        {errMessage}
+        {errMessage}        
       </div>
     );
   }
