@@ -12,6 +12,7 @@ export default class RandomPlanet extends React.Component {
 
   state = {
     planet: {},
+    loading: true,
   };
 
   componentDidMount() {
