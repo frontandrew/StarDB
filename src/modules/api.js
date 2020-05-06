@@ -2,8 +2,14 @@ export default class Api {
 
   _apiUrl = 'https://swapi.dev/api/';
 
+  controller = new AbortController();
+
+  abortRequest() {
+    this.controller.abort();
+  }
+
   async getResource(url) {
-    const res = await fetch(`${this._apiUrl}${url}`);
+    const res = await fetch(`${this._apiUrl}${url}`, { signal: this.controller.signal });
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}, received ${res.status}`);
     }

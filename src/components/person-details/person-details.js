@@ -11,12 +11,11 @@ export default class PersonDetails extends React.Component {
 
   state = {
     person: null,
+    loading: false
   }
 
   componentDidMount() {
-    console.log('componentDidMount()');
     this.updatePerson();
-    this.setState({ init: true, loading: false });
   }
 
   componentDidUpdate(prevProps) {
@@ -26,18 +25,11 @@ export default class PersonDetails extends React.Component {
   }
 
   updatePerson() {
-
-    this.setState({
-      person: null,
-      loading: true,
-      init: false
-    });
-
     const { personId } = this.props;
-    if (!personId) {
-      return;
-    }
 
+    if (!personId) return;
+
+    this.setState({ person: null, loading: true });
     this.swapi.getPerson(personId)
       .then((person) => {
         this.setState({ person, loading: false });
@@ -45,12 +37,11 @@ export default class PersonDetails extends React.Component {
   }
 
   render() {
-
-    const { person, loading, init } = this.state;
+    const { person, loading } = this.state;
 
     const content = person ? <PersonContent person={person} /> : null;
     const spiner = loading ? <Spiner /> : null;
-    const message = init ? <InitialMessage /> : null;
+    const message = !this.props.personId ? <InitialMessage /> : null;
 
     return (
       <div className="person-details card">
