@@ -26,3 +26,7 @@
   align-items: center;
   color: #c78f22;
 }
+
+.person-details .list-group-item button{
+  margin: 0;
+}

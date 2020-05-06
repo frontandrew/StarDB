@@ -4,6 +4,7 @@ import './person-details.css';
 
 import Api from '../../modules/api';
 import Spiner from '../spiner/spiner';
+import ErrorButton from '../error-button/error-button';
 
 export default class PersonDetails extends React.Component {
 
@@ -59,6 +60,7 @@ const PersonContent = ({ person }) => {
 
   return (
     <React.Fragment>
+
       <img className="person-image" alt="person image"
         src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
       <div className="card-body">
@@ -80,8 +82,12 @@ const PersonContent = ({ person }) => {
             <span className="term">Eye Color:</span>
             <span>{eyeColor}</span>
           </li>
+          <li className="list-group-item">
+            <ErrorButton />
+          </li>
         </ul>
       </div>
+
     </React.Fragment>
   );
 }
