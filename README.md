@@ -1,5 +1,5 @@
 # StarDB (react)
-## v0.0.1
+## v0.0.2
 ---
   
 ### About:
@@ -40,6 +40,15 @@ Hi! And wellcome.
 ### Whats new:
 
 <details>
+    <summary>v0.0.2 Planets and Characters</summary>
+    <li>Added block what show planets. Another planet every 10 seconds.</li>
+    <li>Added list of characters. Click on character name will open his details.</li>
+    <li>Character details now shows in new block.</li>
+    <li>App get all Star Wars data from swapi.dev.</li>
+    <li>Update readme</li>
+</details>
+
+<details>
     <summary>v0.0.1 Project Start</summary>
     <li>Added README file</li>
     <li>Added license</li>
@@ -54,7 +63,10 @@ Hi! And wellcome.
 
 * [React](https://reactjs.org);
 * [Juriy Bura](https://github.com/Juriy);
+* [SWAPI](https://swapi.dev);
+* [starwars-visualguide.com](https://starwars-visualguide.com);
 * [Bootswatch](https://bootswatch.com);
+* [Loading.io](https://loading.io);
 * [WebPack](https://webpack.js.org);
 * [Babel](https://babeljs.io);
 * [PostCSS](https://vk.com/postcss);

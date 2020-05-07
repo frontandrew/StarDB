@@ -7,21 +7,22 @@ import Spiner from '../spiner/spiner';
 
 export default class ItemList extends React.Component {
 
-  swapi = new Api();
-
   state = {
-    peopleList: null,
+    itemsList: null,
   }
 
   componentDidMount() {
-    this.swapi.getAllPeople()
-      .then((peopleList) => {
-        this.setState({ peopleList });
+    
+    //const { getData } = this.props;
+    
+    this.props.getData()
+      .then((itemsList) => {
+        this.setState({ itemsList });
       });
   }
 
-  renderItems(peopleList) {
-    return peopleList.map(({ id, name }) => {
+  renderItems(itemsList) {
+    return itemsList.map(({ id, name }) => {
       return (
         <li
           key={id}
@@ -35,13 +36,13 @@ export default class ItemList extends React.Component {
 
   render() {
 
-    const { peopleList } = this.state;
+    const { itemsList } = this.state;
 
-    if (!peopleList) {
+    if (!itemsList) {
       return <Spiner />
     }
 
-    const items = this.renderItems(peopleList);
+    const items = this.renderItems(itemsList);
 
     return (
       <ul className="item-list list-group">

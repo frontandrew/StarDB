@@ -1,17 +1,20 @@
 
 import React from 'react';
 
+import './app.css';
+
+import Api from '../../modules/api';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
 import ItemList from '../item-list/item-list';
 import PersonDetails from '../person-details/person-details';
 import ErrorMessage from '../error-message/error-message';
 import ErrorButton from '../error-button/error-button';
-
-import './app.css';
 import PeoplePage from '../people-page/people-page';
 
 export default class App extends React.Component {
+
+  swapi = new Api();
 
   state = {
     showRandomPlanet: true,
@@ -58,6 +61,18 @@ export default class App extends React.Component {
         <ErrorButton />
 
         <PeoplePage />
+
+        <div className="row mb2">
+        <div className="col-md-6">
+          <ItemList
+            onItemSelected={this.onPersonSelected} 
+            getData={this.swapi.getAllStarships}/>
+        </div>
+        <div className="col-md-6">
+          <PersonDetails
+            personId={this.state.selectedPerson} />
+        </div>
+      </div>
 
       </div>
     );
