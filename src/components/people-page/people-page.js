@@ -12,7 +12,7 @@ export default class PeoplePage extends React.Component {
   swapi = new Api();
 
   state = {
-    selectedPerson: 4,
+    selectedPerson: null,
     hasError: false,
   }
 
@@ -37,7 +37,8 @@ export default class PeoplePage extends React.Component {
         <div className="col-md-6">
           <ItemList
             onItemSelected={this.onPersonSelected}
-            getData={this.swapi.getAllPeople} />
+            getData={this.swapi.getAllPeople}
+            renderItem={({ name, birthYear, gender }) => `${name} (${gender}, ${birthYear})`} />
         </div>
         <div className="col-md-6">
           <PersonDetails

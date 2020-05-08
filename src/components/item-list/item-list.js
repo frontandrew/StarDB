@@ -2,7 +2,6 @@ import React from 'react';
 
 import './item-list.css';
 
-import Api from '../../modules/api';
 import Spiner from '../spiner/spiner';
 
 export default class ItemList extends React.Component {
@@ -12,23 +11,25 @@ export default class ItemList extends React.Component {
   }
 
   componentDidMount() {
-    
-    //const { getData } = this.props;
-    
-    this.props.getData()
+
+    const { getData } = this.props;
+
+    getData()
       .then((itemsList) => {
         this.setState({ itemsList });
       });
   }
 
   renderItems(itemsList) {
-    return itemsList.map(({ id, name }) => {
+    return itemsList.map((item) => {
+      const { id } = item;
+      const label = this.props.renderItem(item);
       return (
         <li
           key={id}
           className="list-group-item"
           onClick={() => this.props.onItemSelected(id)}>
-          {name}
+          {label}
         </li>
       );
     })

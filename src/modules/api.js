@@ -18,12 +18,12 @@ export default class Api {
 
   getAllPeople = async () => {
     const res = await this.getResource(`people/`)
-    return res.results.map(this._transformRerson);
+    return res.results.map(this._transformPerson);
   }
 
   getPerson = async (id) => {
     const person = await this.getResource(`people/${id}/`)
-    return this._transformRerson(person);
+    return this._transformPerson(person);
   }
 
   getAllPlanets = async () => {
@@ -61,20 +61,20 @@ export default class Api {
     }
   }
 
-  _transformStarship = (starships) => {
+  _transformStarship = (starship) => {
     return {
-      id: this._extractId(starships),
-      name: starships.name,
-      model: starships.model,
-      manufacturer: starships.manufacturer,
-      costInCredits: starships.cost_in_credits,
-      length: starships.length,
-      pessengers: starships.pessengers,
-      cargoCapacity: starships.cargo_capacity,
+      id: this._extractId(starship),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.cost_in_credits,
+      length: starship.length,
+      pessengers: starship.pessengers,
+      cargoCapacity: starship.cargo_capacity,
     }
   }
 
-  _transformRerson = (person) => {
+  _transformPerson = (person) => {
     return {
       id: this._extractId(person),
       name: person.name,
