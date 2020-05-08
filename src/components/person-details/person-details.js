@@ -45,7 +45,7 @@ export default class PersonDetails extends React.Component {
     const message = !this.props.personId ? <InitialMessage /> : null;
 
     return (
-      <div className="person-details card">
+      <div className="person-details card list-group-item">
         {message}
         {content}
         {spiner}

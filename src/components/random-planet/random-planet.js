@@ -5,6 +5,7 @@ import './random-planet.css';
 
 import Spiner from '../spiner/spiner';
 import ErrorMessage from '../error-message/error-message';
+import ErrorBoundry from '../error-boundry/error-boundry';
 
 export default class RandomPlanet extends React.Component {
 
@@ -57,11 +58,13 @@ export default class RandomPlanet extends React.Component {
     const planetVeiw = hasData ? <PlanetVeiw planet={planet} /> : null;
 
     return (
-      <div className="random-planet jumbotron rounded">
-        {spiner}
-        {planetVeiw}
-        {errMessage}        
-      </div>
+      <ErrorBoundry>
+        <div className="random-planet jumbotron">
+          {spiner}
+          {planetVeiw}
+          {errMessage}
+        </div>
+      </ErrorBoundry>
     );
   }
 }
