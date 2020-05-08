@@ -1,68 +1,76 @@
 import React from 'react';
 
-import './person-details.css';
+import './item-details.css';
 
-import Api from '../../modules/api';
+//import Api from '../../modules/api';
 import Spiner from '../spiner/spiner';
+import ErrorBoundry from '../error-boundry/error-boundry';
 import ErrorButton from '../error-button/error-button';
 
-export default class PersonDetails extends React.Component {
+export default class ItemDetails extends React.Component {
 
-  swapi = new Api();
+  //swapi = new Api();
 
   state = {
-    person: null,
+    item: null,
+    image: null,
     loading: false
   }
 
   componentDidMount() {
-    this.updatePerson();
+    this.updateItem();
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId) {
-      this.updatePerson();
+    if (this.props.itemId !== prevProps.itemId) {
+      this.updateItem();
     }
   }
 
-  updatePerson() {
-    const { personId } = this.props;
+  updateItem() {
+    const { itemId, getData, getImageUrl } = this.props;
 
-    if (!personId) return;
+    if (!itemId) return;
 
-    this.setState({ person: null, loading: true });
-    this.swapi.getPerson(personId)
-      .then((person) => {
-        this.setState({ person, loading: false });
+    this.setState({ item: null, loading: true });
+    getData(itemId)
+      .then((item) => {
+        this.setState({ 
+          item,
+          image: getImageUrl(item),
+          loading: false 
+        });
       });
   }
 
   render() {
-    const { person, loading } = this.state;
+    const { item, loading, image } = this.state;
 
-    const content = person ? <PersonContent person={person} /> : null;
+    const content = item ? <ItemContent item={item} image={image}/> : null;
     const spiner = loading ? <Spiner /> : null;
-    const message = !this.props.personId ? <InitialMessage /> : null;
+    const message = !this.props.itemId ? <InitialMessage /> : null;
 
     return (
-      <div className="person-details card list-group-item">
-        {message}
-        {content}
-        {spiner}
-      </div>
+      <ErrorBoundry>
+        <div className="item-details card list-group-item">
+          {message}
+          {content}
+          {spiner}
+        </div>
+      </ErrorBoundry>
     )
   }
 }
 
-const PersonContent = ({ person }) => {
+const ItemContent = ({ item, image }) => {
 
-  const { id, name, height, gender, birthYear, eyeColor } = person;
+  const { id, name, height, gender, birthYear, eyeColor } = item;
 
   return (
     <React.Fragment>
 
-      <img className="person-image" alt="person image"
-        src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+      <img className="item-image" alt="item image"
+        src={image} />
       <div className="card-body">
         <h4>{name}</h4>
         <ul className="list-group list-group-flush">

@@ -25,9 +25,11 @@ export default class PeoplePage extends React.Component {
       <ItemList
         onItemSelected={this.onPersonSelected}
         getData={this.swapi.getAllPeople}
-        renderItem={({ name, birthYear, gender }) => {
-          return `${name} (${gender}, ${birthYear})`
-        }} />
+        renderItem={
+          ({ name, birthYear, gender }) => {
+            return `${name} (${gender}, ${birthYear})`
+          }
+        } />
     );
 
     const personDetails = (
