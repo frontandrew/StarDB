@@ -2,53 +2,33 @@ import React from 'react';
 
 import './item-list.css';
 
-import Spiner from '../spiner/spiner';
+import Api from '../../modules/api';
+import withData from '../hoc-helper/with-data';
 
-export default class ItemList extends React.Component {
+const ItemList = (props) => {
 
-  state = {
-    itemsList: null,
-  }
+  const { data, children: renderLabel, onItemSelected } = props;
 
-  componentDidMount() {
-
-    const { getData } = this.props;
-
-    getData()
-      .then((itemsList) => {
-        this.setState({ itemsList });
-      });
-  }
-
-  renderItems(itemsList) {
-    return itemsList.map((item) => {
-      const { id } = item;
-      const label = this.props.renderItem(item);
-      return (
-        <li
-          key={id}
-          className="list-group-item"
-          onClick={() => this.props.onItemSelected(id)}>
-          {label}
-        </li>
-      );
-    })
-  }
-
-  render() {
-
-    const { itemsList } = this.state;
-
-    if (!itemsList) {
-      return <Spiner />
-    }
-
-    const items = this.renderItems(itemsList);
-
+  const items = data.map((item) => {
+    const { id } = item;
+    const label = renderLabel(item);
     return (
-      <ul className="item-list list-group">
-        {items}
-      </ul>
+      <li
+        key={id}
+        className="list-group-item"
+        onClick={() => onItemSelected(id)}>
+        {label}
+      </li>
     );
-  }
+  });
+
+  return (
+    <ul className="item-list list-group">
+      {items}
+    </ul>
+  );
 }
+
+const { getAllPeople } = new Api();
+
+export default withData(ItemList, getAllPeople);

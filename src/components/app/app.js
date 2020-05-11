@@ -6,7 +6,9 @@ import './app.css';
 import Api from '../../modules/api';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
-import ItemDetails from '../item-details/item-details';
+//import PeoplePage from '../people-page/people-page';
+import ItemList from '../item-list/item-list';
+import ItemDetails, { Record } from '../item-details/item-details';
 import Row from '../row/row';
 import ErrorBoundry from '../error-boundry/error-boundry';
 import ErrorButton from '../error-button/error-button';
@@ -34,20 +36,52 @@ export default class App extends React.Component {
   render() {
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-    const { getPerson, getPersonImage, getStarship, getStarshipImage  } = this.swapi;
+    const { getAllPeople, getPerson, getPersonImage, getAllStarships, getStarship, getStarshipImage } = this.swapi;
+
+    const personsList = (
+      <ItemList
+        onItemSelected={() => { }}
+        getData={getAllPeople} >
+
+        {({ name }) => <span>{name}</span>}
+      </ItemList>
+    );
 
     const personDetails = (
       <ItemDetails
-        itemId={4}
+        itemId={11}
         getData={getPerson}
-        getImageUrl={getPersonImage} />
+        getImageUrl={getPersonImage} >
+
+        <Record field="gender" label="Gender" />
+        <Record field="birthYear" label="Birth year" />
+        <Record field="height" label="Height" />
+        <Record field="eyeColor" label="Eye color" />
+
+      </ItemDetails>
+    );
+
+    const starshipsList = (
+      <ItemList
+        onItemSelected={() => { }}
+        getData={getAllStarships} >
+
+        {({ name }) => <span>{name}</span>}
+      </ItemList>
     );
 
     const starshipDetails = (
       <ItemDetails
         itemId={9}
         getData={getStarship}
-        getImageUrl={getStarshipImage} />
+        getImageUrl={getStarshipImage} >
+
+        <Record field="model" label="Model" />
+        <Record field="costInCredits" label="Cost" />
+        <Record field="length" label="Length" />
+        <Record field="passengers" label="Passengers" />
+
+      </ItemDetails>
     );
 
     return (
@@ -55,15 +89,16 @@ export default class App extends React.Component {
         <div className="stardb-app">
           <Header />
           {planet}
-
           <button
             className="toggle-planet btn btn-warning btn-lg"
             onClick={this.toggleRandomPlanet}>
             Toggle Planet
-        </button>
+          </button>
           <ErrorButton />
 
-          <Row left={personDetails} rigth={starshipDetails} />
+
+          <Row left={starshipsList} rigth={starshipDetails} />
+          <Row left={personsList} rigth={personDetails} />
 
         </div>
       </ErrorBoundry>

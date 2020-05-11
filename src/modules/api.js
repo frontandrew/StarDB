@@ -82,7 +82,7 @@ export default class Api {
       manufacturer: starship.manufacturer,
       costInCredits: starship.cost_in_credits,
       length: starship.length,
-      pessengers: starship.pessengers,
+      passengers: starship.passengers,
       cargoCapacity: starship.cargo_capacity,
     }
   }
