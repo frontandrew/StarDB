@@ -2,7 +2,6 @@ import React from 'react';
 
 import './item-details.css';
 
-//import Api from '../../modules/api';
 import Spiner from '../spiner/spiner';
 import ErrorBoundry from '../error-boundry/error-boundry';
 import ErrorButton from '../error-button/error-button';
@@ -21,8 +20,6 @@ const Record = ({ item, field, label }) => {
 export { Record };
 
 export default class ItemDetails extends React.Component {
-
-  //swapi = new Api();
 
   state = {
     item: null,
