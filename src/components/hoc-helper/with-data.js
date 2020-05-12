@@ -4,7 +4,7 @@ import Spiner from '../spiner/spiner';
 import ErrorMessage from '../error-message/error-message';
 
 
-const withData = (View, getData) => {
+const withData = (View) => {
   return class extends React.Component {
 
     state = {
@@ -14,7 +14,7 @@ const withData = (View, getData) => {
 
     componentDidMount() {
 
-      getData()
+      this.props.getData()
         .then((data) => {
           this.setState({ data });
         })
