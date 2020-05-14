@@ -1,13 +1,22 @@
 import React from 'react';
-import Api from '../../modules/api'
+import PropTypes from 'prop-types';
 
 import './random-planet.css';
 
+import Api from '../../modules/api'
 import Spiner from '../spiner/spiner';
 import ErrorMessage from '../error-message/error-message';
 import ErrorBoundry from '../error-boundry/error-boundry';
 
 export default class RandomPlanet extends React.Component {
+
+  static defaultProps = {
+    updateInterval: 10000
+  }
+
+  static propTypes = {
+    updateInterval: PropTypes.number
+  }
 
   swapi = new Api();
 
@@ -18,7 +27,7 @@ export default class RandomPlanet extends React.Component {
 
   componentDidMount() {
     this.updatePlanet();
-    this.interval = setInterval(this.updatePlanet, 60000);
+    this.interval = setInterval(this.updatePlanet, this.props.updateInterval);
   }
 
   componentWillUnmount() {

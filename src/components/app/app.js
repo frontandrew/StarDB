@@ -33,7 +33,7 @@ export default class App extends React.Component {
           <div className="stardb-app">
 
             <Header onApiChange={this.onApiChange} />
-            <RandomPlanet />
+            <RandomPlanet updateInterval={60000}/>
             <PeoplePage />
             <StarshipPage />
             <PlanetPage />
