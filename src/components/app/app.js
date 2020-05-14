@@ -35,8 +35,8 @@ export default class App extends React.Component {
             <Header onApiChange={this.onApiChange} />
             <RandomPlanet />
             <PeoplePage />
-            <PlanetPage />
             <StarshipPage />
+            <PlanetPage />
 
           </div>
         </ApiProvider>
