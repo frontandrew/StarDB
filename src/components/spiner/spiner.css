@@ -1,0 +1,43 @@
+@keyframes spiner {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+.spiner > div > div {
+  position: absolute;
+  border-radius: 50%;
+}
+.spiner > div > div:nth-child(1) {
+  top: 9px;
+  left: 9px;
+  width: 82px;
+  height: 82px;
+  background: #737373;
+}
+.spiner > div > div:nth-child(2) {
+  top: 13.920000000000002px;
+  left: 36.88px;
+  width: 26.24px;
+  height: 26.24px;
+  background: #b7b7b7;
+  animation: spiner 3.3333333333333335s linear infinite;
+  transform-origin: 13.12px 36.08px;
+}
+.spiner-container {
+  width: 71px;
+  height: 71px;  
+  margin: auto;
+  display: inline-block;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0);
+}
+.spiner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.71);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.spiner div {
+ box-sizing: content-box; 
+}
