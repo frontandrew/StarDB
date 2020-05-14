@@ -1,69 +1,42 @@
-
 import React from 'react';
 
 import './app.css';
 
 import { ApiProvider } from '../api-context/api-context';
-
 import Api from '../../modules/api';
+import TestApi from '../../modules/test-api';
+
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
-import ItemList from '../item-list/item-list';
-import ItemDetails, { Record } from '../item-details/item-details';
-import Row from '../row/row';
+import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
 import ErrorBoundry from '../error-boundry/error-boundry';
-import ErrorButton from '../error-button/error-button';
-
-import {
-  PersonDetails, PlanetDetails, StarshipDetails,
-  PersonList, PlanetList, StarshipList
-} from '../sw-components';
 
 export default class App extends React.Component {
 
-  swapi = new Api();
-
   state = {
-    showRandomPlanet: true
+    swapi: new Api(),
   }
 
-  toggleRandomPlanet = () => {
-    this.setState((state) => {
-      return state.showRandomPlanet = !state.showRandomPlanet
+  onApiChange = () => {
+    this.setState(({ swapi }) => {
+      const Service = swapi instanceof Api ? TestApi : Api;
+      console.log('switched to: ' + Service.name)
+
+      return { swapi: new Service() }
     });
   }
 
-  onPersonSelected = (id) => {
-    this.setState({
-      selectedPerson: id,
-    })
-  }
-
   render() {
-    const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
-
     return (
       <ErrorBoundry>
-        <ApiProvider value={this.swapi}>
+        <ApiProvider value={this.state.swapi}>
           <div className="stardb-app">
 
-            <Header />
-            {planet}
-            <button
-              className="toggle-planet btn btn-warning btn-lg"
-              onClick={this.toggleRandomPlanet}>
-              Toggle Planet
-            </button>
-
-            <ErrorButton />
-
-            <PersonDetails itemId={22} />
-            <PlanetDetails itemId={3} />
-            <StarshipDetails itemId={11} />
-
-            <PersonList />
-            <PlanetList />
-            <StarshipList />
+            <Header onApiChange={this.onApiChange} />
+            <RandomPlanet />
+            <PeoplePage />
+            <PlanetPage />
+            <StarshipPage />
 
           </div>
         </ApiProvider>

@@ -4,7 +4,7 @@ import ItemList from '../item-list/item-list'
 import withData from '../hoc-helper/with-data'
 import withSwapi from '../hoc-helper/with-swapi'
 
-const withChildFunc = (Component, childFunc) => {
+const withChildFunc = (childFunc) => (Component) => {
   return (props) => {
     return (
       <Component {...props}>
@@ -28,9 +28,9 @@ const mapStarshipMethodsToProps = (swapi) => {
   return { getData: swapi.getAllStarships }
 }
 
-const PersonList = withSwapi(withData(withChildFunc(ItemList, personLabel)), mapPersonMethodsToProps);
-const PlanetList = withSwapi(withData(withChildFunc(ItemList, planetLabel)), mapPlanetMethodsToProps);
-const StarshipList = withSwapi(withData(withChildFunc(ItemList, starshipLabel)), mapStarshipMethodsToProps);
+const PersonList = withSwapi(mapPersonMethodsToProps)(withData(withChildFunc(personLabel)(ItemList)));
+const PlanetList = withSwapi(mapPlanetMethodsToProps)(withData(withChildFunc(planetLabel)(ItemList)));
+const StarshipList = withSwapi(mapStarshipMethodsToProps)(withData(withChildFunc(starshipLabel)(ItemList)));
 
 export {
   PersonList,

@@ -42,9 +42,10 @@ Hi! And wellcome.
 <details>
     <summary>v0.0.2 Planets and Characters</summary>
     <li>Added block what show planets. Another planet every 10 seconds.</li>
-    <li>Added list of characters. Click on character name will open his details.</li>
-    <li>Character details now shows in new block.</li>
-    <li>App get all Star Wars data from swapi.dev.</li>
+    <li>Added lists of characters, planets and starships. Click on any list item will open his details.</li>
+    <li>Details now shows in new block.</li>
+    <li>App got all Star Wars data from [SWAPI](https://swapi.dev)</li>
+    <li>Images got from [starwars-visualguide.com](https://starwars-visualguide.com)</li>
     <li>Update readme</li>
 </details>
 

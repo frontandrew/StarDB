@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ApiConsumer } from '../api-context/api-context';
 
-const withSwapi = (Component, mapApiMethodsToProps) => {
+const withSwapi = (mapApiMethodsToProps) => (Component) => {
   return (props) => {
     return (
       <ApiConsumer>

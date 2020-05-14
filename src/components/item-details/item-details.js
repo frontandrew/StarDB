@@ -33,7 +33,11 @@ export default class ItemDetails extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.itemId !== prevProps.itemId) {
+    const { itemId, getData, getImageUrl } = this.props;
+
+    if (itemId !== prevProps.itemId ||
+        getData !== prevProps.getData ||
+        getImageUrl !== prevProps.getImageUrl) {
       this.updateItem();
     }
   }
@@ -60,7 +64,7 @@ export default class ItemDetails extends React.Component {
       });
   }
 
-  render() {    
+  render() {
     const { loading, item, image, hasError } = this.state;
 
     if (hasError) {
@@ -84,16 +88,13 @@ export default class ItemDetails extends React.Component {
 }
 
 const ItemContent = ({ item, image, children }) => {
-
-  const { id, name, height, gender, birthYear, eyeColor } = item;
-
   return (
     <React.Fragment>
 
-      <img className="item-image" alt="item image"
+      <img className="item-image" alt="view of selected"
         src={image} />
       <div className="card-body">
-        <h4>{name}</h4>
+        <h4>{item.name}</h4>
         <ul className="list-group list-group-flush">
           {
             React.Children.map(children, (child) => {
