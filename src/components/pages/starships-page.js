@@ -4,7 +4,7 @@ import Row from '../row/row';
 
 import { StarshipDetails, StarshipList } from '../sw-components';
 
-export default class StarshipPage extends React.Component {
+export default class StarshipsPage extends React.Component {
 
   state = {
     itemId: null

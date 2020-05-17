@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './app.css';
 
@@ -8,7 +9,7 @@ import TestApi from '../../modules/test-api';
 
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
-import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
+import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 import ErrorBoundry from '../error-boundry/error-boundry';
 
 export default class App extends React.Component {
@@ -30,15 +31,24 @@ export default class App extends React.Component {
     return (
       <ErrorBoundry>
         <ApiProvider value={this.state.swapi}>
-          <div className="stardb-app">
+          <Router>
+            <div className="stardb-app">
 
-            <Header onApiChange={this.onApiChange} />
-            <RandomPlanet updateInterval={60000}/>
-            <PeoplePage />
-            <StarshipPage />
-            <PlanetPage />
+              <Header onApiChange={this.onApiChange} />
+              <RandomPlanet updateInterval={60000} />
 
-          </div>
+              <Route path="/"
+                render={() => <h2>Welcome to Star DB</h2>}
+                exact />
+              <Route path="/people" render={() => <h2>People</h2>} />
+              <Route path="/people" component={PeoplePage} />
+              <Route path="/starships" render={() => <h2>Starships</h2>} />
+              <Route path="/starships" component={StarshipsPage} />
+              <Route path="/planets" render={() => <h2>Planets</h2>} />
+              <Route path="/planets" component={PlanetsPage} />
+
+            </div>
+          </Router>
         </ApiProvider>
       </ErrorBoundry>
     );
