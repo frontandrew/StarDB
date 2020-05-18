@@ -11,6 +11,7 @@ import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
 import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 import ErrorBoundry from '../error-boundry/error-boundry';
+import { StarshipDetails } from '../sw-components';
 
 export default class App extends React.Component {
 
@@ -42,10 +43,13 @@ export default class App extends React.Component {
                 exact />
               <Route path="/people" render={() => <h2>People</h2>} />
               <Route path="/people" component={PeoplePage} />
-              <Route path="/starships" render={() => <h2>Starships</h2>} />
-              <Route path="/starships" component={StarshipsPage} />
               <Route path="/planets" render={() => <h2>Planets</h2>} />
               <Route path="/planets" component={PlanetsPage} />
+              <Route path="/starships" exact component={StarshipsPage} />
+              <Route path="/starships/:id"
+                render={({ match }) => {
+                  return <StarshipDetails itemId={match.params.id} />
+                }} />
 
             </div>
           </Router>

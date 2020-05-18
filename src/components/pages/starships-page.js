@@ -1,25 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import Row from '../row/row';
+import { StarshipList } from '../sw-components';
 
-import { StarshipDetails, StarshipList } from '../sw-components';
-
-export default class StarshipsPage extends React.Component {
-
-  state = {
-    itemId: null
-  }
-
-  onItemSelected = (itemId) => {
-    this.setState({ itemId })
-  }
-
-  render() {
-    return (
-      <Row
-        left={<StarshipList onItemSelected={this.onItemSelected} />}
-        rigth={<StarshipDetails itemId={this.state.itemId} />}
-      />
-    );
-  }
+const StarshipsPage = ({ history }) => {
+  return (
+    <StarshipList onItemSelected={itemId => history.push(itemId)} />
+  );
 }
+
+export default withRouter(StarshipsPage);
