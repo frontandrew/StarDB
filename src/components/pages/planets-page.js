@@ -4,7 +4,7 @@ import Row from '../row/row';
 
 import { PlanetDetails, PlanetList } from '../sw-components';
 
-export default class PlanetPage extends React.Component {
+export default class PlanetsPage extends React.Component {
 
   state = {
     itemId: null
