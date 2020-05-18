@@ -42,7 +42,7 @@ export default class App extends React.Component {
                 render={() => <h2>Welcome to Star DB</h2>}
                 exact />
               <Route path="/people" render={() => <h2>People</h2>} />
-              <Route path="/people" component={PeoplePage} />
+              <Route path="/people/:id?" component={PeoplePage} />
               <Route path="/planets" render={() => <h2>Planets</h2>} />
               <Route path="/planets" component={PlanetsPage} />
               <Route path="/starships" exact component={StarshipsPage} />

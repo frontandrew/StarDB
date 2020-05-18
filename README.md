@@ -1,5 +1,5 @@
 # StarDB (react)
-## v0.0.2
+## v0.1.0
 ---
   
 ### About:
@@ -38,6 +38,17 @@ User can read info about Star Wars universe, like characters, starships and plan
 4. To develop/debug project local run `npm run start`. This run webpack dev server on your local on 3000 port.
 
 ### Whats new:
+
+<details>
+    <summary>v0.1.0 Separate pages</summary>
+    <li>Now pages with characters, planets and ships are separated</li>
+    <li>Click on starship from list will open new page with details</li>
+    <li>Click on people from list will open character details on current page.
+    It will save after page reboot</li>
+    <li>Click on planet from list will open planet details on current page, as well. 
+    But after page reboot planet details will disapeare.</li>
+    <li>Update readme</li>
+</details>
 
 <details>
     <summary>v0.0.2 Planets and Characters</summary>
