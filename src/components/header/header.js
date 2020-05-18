@@ -11,6 +11,8 @@ const Header = ({ onApiChange }) => {
         <li><Link to="/people/">People</Link></li>
         <li><Link to="/planets/">Planets</Link></li>
         <li><Link to="/starships/">Starships</Link></li>
+        <li><Link to="/login/">Login</Link></li>
+        <li><Link to="/secret">Secret</Link></li>
       </ul>
       <button
         onClick={onApiChange}

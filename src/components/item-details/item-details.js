@@ -3,7 +3,6 @@ import React from 'react';
 import './item-details.css';
 
 import Spiner from '../spiner/spiner';
-import ErrorBoundry from '../error-boundry/error-boundry';
 import ErrorButton from '../error-button/error-button';
 import ErrorMessage from '../error-message/error-message';
 
@@ -45,7 +44,7 @@ export default class ItemDetails extends React.Component {
   updateItem() {
     const { itemId, getData, getImageUrl } = this.props;
 
-    if (!itemId) return;
+    if (!itemId) return this.setState({ item: null, image: null, hasError: false });
 
     this.setState({ item: null, loading: true });
     getData(itemId)
@@ -53,11 +52,12 @@ export default class ItemDetails extends React.Component {
         this.setState({
           item,
           image: getImageUrl(item),
-          loading: false
+          loading: false,
+          hasError: false
         });
       })
       .catch((err) => {
-        this.setState({
+        this.setState({          
           hasError: true,
           loading: false
         });
@@ -73,16 +73,14 @@ export default class ItemDetails extends React.Component {
 
     const content = item ? <ItemContent item={item} image={image} children={this.props.children} /> : null;
     const spiner = loading ? <Spiner /> : null;
-    const message = !this.props.itemId ? <InitialMessage /> : null;
+    const message = !item && !loading ? <InitialMessage /> : null;
 
     return (
-      <ErrorBoundry>
         <div className="item-details card list-group-item">
           {message}
           {content}
           {spiner}
         </div>
-      </ErrorBoundry>
     )
   }
 }

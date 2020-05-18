@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Row from '../row/row';
 
@@ -16,10 +16,13 @@ export default class PlanetsPage extends React.Component {
 
   render() {
     return (
-      <Row
-        left={<PlanetList onItemSelected={this.onItemSelected} />}
-        rigth={<PlanetDetails itemId={this.state.itemId} />}
-      />
+      <Fragment>
+        <h2>Planets</h2>
+        <Row
+          left={<PlanetList onItemSelected={this.onItemSelected} />}
+          rigth={<PlanetDetails itemId={this.state.itemId} />}
+        />
+      </Fragment>
     );
   }
 }

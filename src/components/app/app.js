@@ -1,5 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+/**Switch отрисует только тот первый компонент с которым совпадет
+ * запрос, остальные игнорируются. Должен оборачивать компоненты 
+ * Route и Redirect.
+ * 
+ * Route без path срабатывает если остальные пути не совпали с запросом
+ * Так можно показывать сообщение 'Page not found' */
 
 import './app.css';
 
@@ -9,14 +15,25 @@ import TestApi from '../../modules/test-api';
 
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
-import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 import ErrorBoundry from '../error-boundry/error-boundry';
 import { StarshipDetails } from '../sw-components';
+import {
+  PeoplePage,
+  PlanetsPage,
+  StarshipsPage,
+  LoginPage,
+  SecretPage,
+} from '../pages';
 
 export default class App extends React.Component {
 
   state = {
     swapi: new Api(),
+    isLoggedIn: false,
+  }
+
+  onLogIn = () => {
+    this.setState({ isLoggedIn: true })
   }
 
   onApiChange = () => {
@@ -38,18 +55,22 @@ export default class App extends React.Component {
               <Header onApiChange={this.onApiChange} />
               <RandomPlanet updateInterval={60000} />
 
-              <Route path="/"
-                render={() => <h2>Welcome to Star DB</h2>}
-                exact />
-              <Route path="/people" render={() => <h2>People</h2>} />
-              <Route path="/people/:id?" component={PeoplePage} />
-              <Route path="/planets" render={() => <h2>Planets</h2>} />
-              <Route path="/planets" component={PlanetsPage} />
-              <Route path="/starships" exact component={StarshipsPage} />
-              <Route path="/starships/:id"
-                render={({ match }) => {
-                  return <StarshipDetails itemId={match.params.id} />
-                }} />
+              <Switch>
+                <Route path="/"
+                  render={() => <h2 className="text-center">Welcome to Star DB</h2>}
+                  exact />
+                <Route path="/people/:id?" component={PeoplePage} />
+                <Route path="/planets" component={PlanetsPage} />
+                <Route path="/starships" exact component={StarshipsPage} />
+                <Route path="/starships/:id"
+                  render={({ match }) => {
+                    return <StarshipDetails itemId={match.params.id} />
+                  }} />
+                <Route path="/login" render={() => <LoginPage isLoggedIn={this.state.isLoggedIn} onLogIn={this.onLogIn} />} />
+                <Route path="/secret" render={() => <SecretPage isLoggedIn={this.state.isLoggedIn} />} />
+                
+                <Redirect to="/" />
+              </Switch>
 
             </div>
           </Router>
