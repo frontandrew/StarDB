@@ -56,20 +56,20 @@ export default class App extends React.Component {
               <RandomPlanet updateInterval={60000} />
 
               <Switch>
-                <Route path="/star-db/"
+                <Route path="/"
                   render={() => <h2 className="text-center">Welcome to Star DB</h2>}
                   exact />
-                <Route path="/star-db/people/:id?" component={PeoplePage} />
-                <Route path="/star-db/planets" component={PlanetsPage} />
-                <Route path="/star-db/starships" exact component={StarshipsPage} />
-                <Route path="/star-db/starships/:id"
+                <Route path="/people/:id?" component={PeoplePage} />
+                <Route path="/planets" component={PlanetsPage} />
+                <Route path="/starships" exact component={StarshipsPage} />
+                <Route path="/starships/:id"
                   render={({ match }) => {
                     return <StarshipDetails itemId={match.params.id} />
                   }} />
-                <Route path="/star-db/login" render={() => <LoginPage isLoggedIn={this.state.isLoggedIn} onLogIn={this.onLogIn} />} />
-                <Route path="/star-db/secret" render={() => <SecretPage isLoggedIn={this.state.isLoggedIn} />} />
+                <Route path="/login" render={() => <LoginPage isLoggedIn={this.state.isLoggedIn} onLogIn={this.onLogIn} />} />
+                <Route path="/secret" render={() => <SecretPage isLoggedIn={this.state.isLoggedIn} />} />
                 
-                <Redirect to="/star-db/" />
+                <Redirect to="/" />
               </Switch>
 
             </div>
