@@ -3,7 +3,6 @@ import React from 'react';
 import './item-details.css';
 
 import Spiner from '../spiner/spiner';
-import ErrorButton from '../error-button/error-button';
 import ErrorMessage from '../error-message/error-message';
 
 const Record = ({ item, field, label }) => {
@@ -100,7 +99,6 @@ const ItemContent = ({ item, image, children }) => {
             })
           }
           <li className="list-group-item">
-            <ErrorButton />
           </li>
         </ul>
       </div>
