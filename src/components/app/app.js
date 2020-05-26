@@ -49,7 +49,7 @@ export default class App extends React.Component {
     return (
       <ErrorBoundry>
         <ApiProvider value={this.state.swapi}>
-          <Router>
+          <Router basename={process.env.PUBLIC_URL + '/#/'}>
             <div className="stardb-app">
 
               <Header onApiChange={this.onApiChange} />
